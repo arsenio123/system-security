@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+<!--<parent>
+    <groupId>system-security</groupId>
+    <artifactId>system-security</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+</parent>
+-->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.6.8</version>
+
+    <relativePath/> <!-- lookup parent from repository 2.6.8,  3.0.6 -->
+  </parent>
+  <groupId>com.system.credit.autentication</groupId>
+  <artifactId>autth-database</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>autth-database</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mariadb.jdbc</groupId>
+      <artifactId>mariadb-java-client</artifactId>
+      <version>1.5.7</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>
