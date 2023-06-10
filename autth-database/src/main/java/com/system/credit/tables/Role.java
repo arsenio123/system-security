@@ -1,31 +1,33 @@
 package com.system.credit.tables;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
 public class Role implements Serializable {
     @Id
-    private UUID role_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String name;
     private String descricao;
 
-    public UUID getRole_id() {
-        return role_id;
+
+    public Long getId() {
+        return id;
     }
 
-    public Role setRole_id(UUID role_id) {
-        this.role_id = role_id;
-        return this;
-    }
 
     public String getDescricao() {
         return descricao;
     }
+    public String getName() {
+        return name;
+    }
 
-    public Role setDescricao(String descricao) {
-        this.descricao = descricao;
+    public Role setName(String name) {
+        this.name = name;
         return this;
     }
 }

@@ -33,12 +33,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/oauth/token").permitAll()
-               // .antMatchers("/hello").permitAll()  credito/list
-                .antMatchers("/credito/list").permitAll()
-                //.antMatchers("credito/list/critirea/v2").permitAll()
-                .antMatchers("/prestacao/atualizarAndUpdate").permitAll()
-                //.antMatchers("/credito/clientes").permitAll()
-                //.antMatchers("/credito/list/critirea").permitAll()
+                //.antMatchers("validate").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

@@ -1,18 +1,14 @@
-package com.system.credit.repository.jpaRepo;
+package com.system.credit.repository;
 
 import com.system.credit.tables.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.UUID;
 
-public interface UserJPARepository extends JpaRepository<User, UUID> {
-
-    @Query("select u from User u where u.name=:name")
+@Repository
+public interface UserJPARepository extends JpaRepository<User, Long> {
     User findByName(String name);
-
 
     List<User> getAllBy();
 }

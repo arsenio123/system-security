@@ -1,5 +1,8 @@
 package com.system.credit.Autorization;
 
+import org.malagueta.fintech.domain.entity.UserEntity;
+import org.malagueta.fintech.domain.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,14 +16,14 @@ import java.util.Set;
 
 @Service
 public class CreditoUserDetailsService  implements UserDetailsService {
-/* @Autowired
-    private UserRepository userRepository;*/
+ @Autowired
+    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        /*
+
         //ler sobre o uso da condicao optional
-        User user= userRepository.findByName(username);
+        UserEntity user= userRepository.findByName(username);
         System.out.println(username);
         if (user==null) {
             System.out.println("utilizador: "+username+" nao encontrado");
@@ -30,12 +33,10 @@ public class CreditoUserDetailsService  implements UserDetailsService {
         System.out.println("utilizador: "+user);
         return new org.springframework.security.core.userdetails.User("{noop}"+user.getName(),
                 "{noop}"+user.getSenha(),
-                getPermissoes(user));
-                */
+                getPermissoes()
+                //getPermissoes(user)
+        );
 
-        return new org.springframework.security.core.userdetails.User("{noop}"+"admin",
-                "{noop}"+"hello",
-                getPermissoes());
     }
 
    /* private Collection<? extends GrantedAuthority> getPermissoes(User user) {

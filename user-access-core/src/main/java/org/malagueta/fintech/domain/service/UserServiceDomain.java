@@ -7,4 +7,7 @@ public class UserServiceDomain {
     public void createUser(UserEntity user, UserRepository repository){
         repository.addUser(user);
     }
+    public UserEntity getUserByName(String name, UserRepository repository){
+        return repository.findByName(name);
+    }
 }

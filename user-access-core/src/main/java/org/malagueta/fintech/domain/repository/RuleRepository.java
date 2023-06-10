@@ -10,5 +10,5 @@ public interface RuleRepository {
 
     RuleEntity updateRule(RuleEntity rule);
 
-    List<RuleEntity> findByID(UUID ruleID);
+    List<RuleEntity> findByID(Long ruleID);
 }

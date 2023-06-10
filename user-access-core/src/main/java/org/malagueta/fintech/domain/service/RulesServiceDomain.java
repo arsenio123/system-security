@@ -14,7 +14,7 @@ public class RulesServiceDomain {
     RuleEntity editRule(RuleEntity rule, RuleRepository repository){
         return repository.updateRule(rule);
     }
-    public List<RuleEntity> searchRuleById(UUID ruleID, RuleRepository repository){
+    public List<RuleEntity> searchRuleById(Long ruleID, RuleRepository repository){
         return repository.findByID(ruleID);
     }
 }

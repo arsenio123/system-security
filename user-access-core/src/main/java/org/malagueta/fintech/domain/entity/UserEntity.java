@@ -1,35 +1,29 @@
 package org.malagueta.fintech.domain.entity;
 
-import java.util.UUID;
+import java.util.Set;
 
 public class UserEntity {
-    private UUID id;
+    private Long id;
     private String name;
     private String senha;
-    private RuleEntity entity;
 
-    public UUID getId() {
+    private Set<RuleEntity> rolles;
+
+    public Long getId() {
         return id;
     }
 
-    public UserEntity(UUID id) {
-        this.id = id;
-    }
-    public UserEntity(){
-        this.id=UUID.randomUUID();
-    }
-
-    public UserEntity setId(UUID id) {
+    public UserEntity setId(Long id) {
         this.id = id;
         return this;
     }
 
-    public RuleEntity getEntity() {
-        return entity;
+    public Set<RuleEntity> getRolles() {
+        return rolles;
     }
 
-    public UserEntity setEntity(RuleEntity entity) {
-        this.entity = entity;
+    public UserEntity setRolles(Set<RuleEntity> rolles) {
+        this.rolles = rolles;
         return this;
     }
 
@@ -50,4 +44,11 @@ public class UserEntity {
         this.senha = senha;
         return this;
     }
+    public void addRole(RuleEntity newRole){
+        rolles.add(newRole);
+    }
+    public void RemoveRole(RuleEntity rule){
+        rolles.remove(rule);
+    }
+
 }
