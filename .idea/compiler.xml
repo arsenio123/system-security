@@ -6,15 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="autth-database" />
+        <module name="credit-system-authetication" />
         <module name="user-access-core" />
+        <module name="autth-database" />
+        <module name="system-security" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="autth-database" options="-parameters" />
-      <module name="credit-system-authetication" options="" />
+      <module name="credit-system-authetication" options="-parameters" />
+      <module name="system-security" options="-parameters" />
     </option>
   </component>
 </project>
