@@ -13,6 +13,7 @@ class CreditSystemAutheticationApplicationTests {
     UserRepository repository;
 
 
+
     @Test
     void contextLoads() {
         repository.addUser(new UserEntity());

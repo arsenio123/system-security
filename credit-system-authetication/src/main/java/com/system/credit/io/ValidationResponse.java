@@ -1,8 +1,10 @@
 package com.system.credit.io;
 
+import org.springframework.http.HttpStatus;
+
 public class ValidationResponse {
     String message;
-    Status status;
+    HttpStatus status;
 
     public String getMessage() {
         return message;
@@ -13,11 +15,11 @@ public class ValidationResponse {
         return this;
     }
 
-    public Status getStatus() {
+    public HttpStatus getStatus() {
         return status;
     }
 
-    public ValidationResponse setStatus(Status status) {
+    public ValidationResponse setStatus(HttpStatus status) {
         this.status = status;
         return this;
     }

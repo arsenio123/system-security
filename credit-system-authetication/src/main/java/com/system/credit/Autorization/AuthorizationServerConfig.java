@@ -16,6 +16,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter
 {
+    public static final String  SIGNINGKEY="accessKey";
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -25,7 +26,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         clients.inMemory().withClient("react")
                 .secret("{noop}r34ct")
                 .scopes("read","write")
-                .authorizedGrantTypes("password").accessTokenValiditySeconds(1200);
+                .authorizedGrantTypes("password").accessTokenValiditySeconds(9000);
     }
 
     @Override
@@ -38,7 +39,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     public JwtAccessTokenConverter accessTokenConverter(){
         JwtAccessTokenConverter accessTokenConverter= new JwtAccessTokenConverter();
-        accessTokenConverter.setSigningKey("accessKey");
+        accessTokenConverter.setSigningKey(SIGNINGKEY);
         return accessTokenConverter;
     }
 

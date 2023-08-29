@@ -1,6 +1,6 @@
 package org.malagueta.fintech.domain.entity;
 
-public class RuleEntity {
+public class RoleEntity {
     private Long id;
     private String name;
     private String description;
@@ -9,7 +9,7 @@ public class RuleEntity {
         return id;
     }
 
-    public RuleEntity setId(Long id) {
+    public RoleEntity setId(Long id) {
         this.id = id;
         return this;
     }
@@ -18,7 +18,7 @@ public class RuleEntity {
         return name;
     }
 
-    public RuleEntity setName(String name) {
+    public RoleEntity setName(String name) {
         this.name = name;
         return this;
     }
@@ -27,7 +27,7 @@ public class RuleEntity {
         return description;
     }
 
-    public RuleEntity setDescription(String description) {
+    public RoleEntity setDescription(String description) {
         this.description = description;
         return this;
     }

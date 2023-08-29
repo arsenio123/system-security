@@ -1,14 +1,13 @@
 package org.malagueta.fintech.domain.repository;
 
-import org.malagueta.fintech.domain.entity.RuleEntity;
+import org.malagueta.fintech.domain.entity.RoleEntity;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface RuleRepository {
-    RuleEntity addRule(RuleEntity rule);
+    RoleEntity addRule(RoleEntity rule);
 
-    RuleEntity updateRule(RuleEntity rule);
+    RoleEntity updateRule(RoleEntity rule);
 
-    List<RuleEntity> findByID(Long ruleID);
+    List<RoleEntity> findByID(Long ruleID);
 }

@@ -7,7 +7,7 @@ public class UserEntity {
     private String name;
     private String senha;
 
-    private Set<RuleEntity> rolles;
+    private Set<RoleEntity> roles;
 
     public Long getId() {
         return id;
@@ -18,12 +18,12 @@ public class UserEntity {
         return this;
     }
 
-    public Set<RuleEntity> getRolles() {
-        return rolles;
+    public Set<RoleEntity> getRoles() {
+        return roles;
     }
 
-    public UserEntity setRolles(Set<RuleEntity> rolles) {
-        this.rolles = rolles;
+    public UserEntity setRoles(Set<RoleEntity> rolles) {
+        this.roles = rolles;
         return this;
     }
 
@@ -44,12 +44,11 @@ public class UserEntity {
         this.senha = senha;
         return this;
     }
-    public void addRole(RuleEntity newRole){
-        rolles.add(newRole);
+    public void addRole(RoleEntity newRole){
+        roles.add(newRole);
     }
-    public void RemoveRole(RuleEntity rule){
-        rolles.remove(rule);
+    public void RemoveRole(RoleEntity rule){
+        roles.remove(rule);
     }
-
 
 }

@@ -3,7 +3,6 @@ package com.system.credit.tables;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 public class Role implements Serializable {
@@ -12,6 +11,12 @@ public class Role implements Serializable {
     private Long id;
     private String name;
     private String descricao;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name ="role_Autorite",
+            joinColumns = @JoinColumn(name="id"),
+            inverseJoinColumns = @JoinColumn(name="auth_id"))
+    private Set<Authority> authoritys;
 
 
     public Long getId() {
@@ -28,6 +33,15 @@ public class Role implements Serializable {
 
     public Role setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public Set<Authority> getAuthoritys() {
+        return authoritys;
+    }
+
+    public Role setAuthoritys(Set<Authority> authoritys) {
+        this.authoritys = authoritys;
         return this;
     }
 }

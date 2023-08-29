@@ -1,8 +1,8 @@
 package com.system.credit.io;
 
 public enum Status {
-    AUTORIZED(0,"AUTORIZED"),
-    NOT_AUTORIZED(2,"NOT_AUTORIZED")
+    AUTORIZED(200,"AUTORIZED"),
+    NOT_AUTORIZED(401,"NOT_AUTORIZED")
     ,NOT_AUTHENTICATED(2,"NOT_AUTHENTICATED");
 
     private final int value;
