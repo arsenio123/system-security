@@ -1,0 +1,12 @@
+com\system\credit\dto\DTO_Authority.class
+com\system\credit\repository\UserJPARepository.class
+com\system\credit\dto\DTO_User.class
+com\system\credit\tables\User.class
+com\system\credit\repository\AuthoriteRepositoryImpl.class
+com\system\credit\repository\jpaRepo\RoleRepositoryImpl.class
+com\system\credit\tables\Role.class
+com\system\credit\dto\DTO_Role.class
+com\system\credit\repository\GenericJDBCRepository.class
+com\system\credit\AuthDBApplication.class
+com\system\credit\repository\UserRepositoryImpl.class
+com\system\credit\tables\Authority.class
