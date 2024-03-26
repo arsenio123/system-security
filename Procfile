@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar credit-system-authetication/target/credit-system-authetication*

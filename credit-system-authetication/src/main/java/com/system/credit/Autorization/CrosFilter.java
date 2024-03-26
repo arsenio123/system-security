@@ -19,8 +19,9 @@ public class CrosFilter implements Filter
     private static final HashMap<String,String> origins=new HashMap<>();
     static {
 
-        origins.put("http://localhost:4200","http://localhost:4200");
+        origins.put("https://build-dream-credit-4c0cceb4477b.herokuapp.com","https://build-dream-credit-4c0cceb4477b.herokuapp.com");
         origins.put("http://localhost:8080","http://localhost:8080");
+        origins.put("http://localhost:4200","http://localhost:4200");
 
     }
 
