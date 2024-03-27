@@ -1,6 +1,5 @@
 package com.system.credit.API;
 
-import com.system.credit.io.Status;
 import com.system.credit.io.ValidationRequest;
 import com.system.credit.io.ValidationResponse;
 import com.system.credit.service.ValidarionService;
@@ -71,10 +70,12 @@ public class Security {
 
 
     @PostMapping("Security/user/create")
+    @CrossOrigin
     public UserEntity create(@RequestBody UserEntity userEntity){
         return userServiceDomain.createUser(userEntity,repository);
     }
     @GetMapping("user/list")
+    @CrossOrigin
     public List<UserEntity> getAllUser(){
         return userServiceDomain.getAllUsers(repository);
     }

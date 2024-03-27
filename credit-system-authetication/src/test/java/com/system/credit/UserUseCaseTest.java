@@ -13,8 +13,12 @@ import org.springframework.util.Assert;
 @SpringBootTest
 public class UserUseCaseTest {
 
-    @Autowired
+
     private UserRepository repository;
+    @Autowired
+   public UserUseCaseTest(UserRepository repository){
+        this.repository=repository;
+    }
 
 
     @Test
