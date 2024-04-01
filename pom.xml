@@ -6,8 +6,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.6</version>
-        <relativePath/> <!-- lookup parent from repository 2.6.8,  3.0.6 -->
+        <version>2.7.4</version>
+        <relativePath/> <!-- lookup parent from repository 2.6.8,  3.0.6, 2.7.4-->
     </parent>
     <groupId>system-security</groupId>
     <artifactId>system-security</artifactId>
