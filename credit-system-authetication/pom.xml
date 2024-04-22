@@ -12,7 +12,7 @@
     </parent>
     <groupId>com.system.credit.autentication</groupId>
     <artifactId>credit-system-authetication</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <!--<packaging>war</packaging>-->
     <name>credit-system-authetication</name>
     <description>credit-system-authetication</description>

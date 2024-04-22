@@ -9,4 +9,6 @@ public interface UserRepository {
     UserEntity updateUser(UserEntity user);
     UserEntity findByName(String name);
     List<UserEntity> getAll();
+
+    UserEntity findById(Long resourceID);
 }

@@ -23,6 +23,11 @@ public class Role implements Serializable {
         return id;
     }
 
+    public Role getId(Long id) {
+        this.id=id;
+        return this;
+    }
+
 
     public String getDescricao() {
         return descricao;
@@ -42,6 +47,11 @@ public class Role implements Serializable {
 
     public Role setAuthoritys(Set<Authority> authoritys) {
         this.authoritys = authoritys;
+        return this;
+    }
+
+    public Role setDescricao(String descricao) {
+        this.descricao=descricao;
         return this;
     }
 }

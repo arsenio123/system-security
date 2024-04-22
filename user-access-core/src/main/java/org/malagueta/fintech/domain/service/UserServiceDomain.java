@@ -5,15 +5,11 @@ import org.malagueta.fintech.domain.repository.UserRepository;
 
 import java.util.List;
 
-public class UserServiceDomain {
-       public UserEntity createUser(UserEntity user, UserRepository repository){
-       return repository.addUser(user);
-    }
-    public UserEntity getUserByName(String name, UserRepository repository){
-        return repository.findByName(name);
-    }
+public interface UserServiceDomain {
+       public UserEntity createUser(UserEntity user, UserRepository repository);
+    public UserEntity getUserByName(String name, UserRepository repository);
 
-    public List<UserEntity> getAllUsers(UserRepository repository) {
-           return repository.getAll();
-    }
+    public List<UserEntity> getAllUsers(UserRepository repository);
+
+    public String changePassword(String id, String oldPassword, String newPassword,UserRepository repository) ;
 }

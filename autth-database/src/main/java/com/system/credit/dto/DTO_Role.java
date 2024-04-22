@@ -1,5 +1,6 @@
 package com.system.credit.dto;
 
+import com.system.credit.mapper.Autority_Mapper;
 import com.system.credit.tables.Role;
 import org.malagueta.fintech.domain.entity.RoleEntity;
 
@@ -19,7 +20,23 @@ public class DTO_Role {
         RoleEntity roleEntity=new RoleEntity();
         return roleEntity.setDescription(role.getDescricao())
                 .setName(role.getName())
-                .setId(role.getId());
+                .setId(role.getId()).setAuthorityEntity(DTO_Authority.convertToAuthorityEntity(role.getAuthoritys()));
 
+    }
+
+    public static Set<Role> convertToTableRolles(Set<RoleEntity> entityRoles) {
+        Set<Role> ruleEntitySet = new HashSet<>();
+        entityRoles.stream().forEach(entityRole -> {
+            ruleEntitySet.add(convertToTableRolle(entityRole));
+        });
+        return ruleEntitySet;
+    }
+
+    private static Role convertToTableRolle(RoleEntity entityRole) {
+        Role role=new Role();
+        role.setName(entityRole.getName())
+                .setDescricao(entityRole.getDescription())
+                .setAuthoritys(Autority_Mapper.convertToTable(entityRole.getAutoritys()));
+        return role;
     }
 }

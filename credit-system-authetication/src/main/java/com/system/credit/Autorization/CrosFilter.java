@@ -1,5 +1,6 @@
 package com.system.credit.Autorization;
 
+import com.system.credit.config.OrigensCofig;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpHeaders;
@@ -10,18 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CrosFilter implements Filter
 {
-    private static final HashMap<String,String> origins=new HashMap<>();
+    private static Map<String,String> origins=new HashMap<>();
     static {
 
-        origins.put("https://build-dream-credit-4c0cceb4477b.herokuapp.com","https://build-dream-credit-4c0cceb4477b.herokuapp.com");
-        origins.put("http://localhost:8080","http://localhost:8080");
-        origins.put("http://localhost:4200","http://localhost:4200");
+        origins= OrigensCofig.getORINGINS();
 
     }
 

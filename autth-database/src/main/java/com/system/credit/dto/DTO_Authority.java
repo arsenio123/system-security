@@ -4,6 +4,9 @@ import com.sun.istack.NotNull;
 import com.system.credit.tables.Authority;
 import org.malagueta.fintech.domain.entity.AuthorityEntity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class DTO_Authority {
     public static AuthorityEntity convertToAuthorityEntity(@NotNull  Authority authority){
 
@@ -20,5 +23,15 @@ public class DTO_Authority {
                 .setAutorize_uri(entity.getUriAcess())
                 .setDescription(entity.getDescription());
 
+    }
+
+    public static Set<AuthorityEntity> convertToAuthorityEntity(@NotNull  Set<Authority> tableAuthoritys){
+        if (tableAuthoritys==null){return null;}
+        Set<AuthorityEntity> authorityEntities=new HashSet<AuthorityEntity> ();
+        tableAuthoritys.stream().forEach(authorityRow->{
+
+            authorityEntities.add(convertToAuthorityEntity(authorityRow));
+        });
+        return authorityEntities;
     }
 }

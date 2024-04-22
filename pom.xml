@@ -11,7 +11,7 @@
     </parent>
     <groupId>system-security</groupId>
     <artifactId>system-security</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>credit-system-authetication</name>
     <description>credit-system-authetication</description>
     <properties>

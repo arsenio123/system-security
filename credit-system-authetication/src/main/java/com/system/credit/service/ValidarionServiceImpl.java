@@ -7,6 +7,7 @@ import org.malagueta.fintech.domain.entity.AuthorityEntity;
 import org.malagueta.fintech.domain.entity.RoleEntity;
 import org.malagueta.fintech.domain.repository.AuthoriteRepository;
 import org.malagueta.fintech.domain.service.AuthorityServiceDomain;
+import org.malagueta.fintech.domain.service.factory.AuthorityServiceDomainFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -36,7 +37,7 @@ public class ValidarionServiceImpl implements ValidarionService{
 
         ValidationResponse response= new ValidationResponse();
         response.setStatus(HttpStatus.UNAUTHORIZED);
-        AuthorityServiceDomain serviceDomain=new AuthorityServiceDomain();
+        AuthorityServiceDomain serviceDomain=AuthorityServiceDomainFactory.getService("");
         if(serviceDomain.isAuthorized(roles, new AuthorityEntity().setUriAcess(uri), authoriteRepository)){
             return response.setStatus(HttpStatus.OK);
         }

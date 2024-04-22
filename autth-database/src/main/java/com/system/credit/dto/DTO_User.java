@@ -11,7 +11,8 @@ public class DTO_User {
             User user=new User();
             user.setId(userEntity.getId())
                     .setName(userEntity.getName())
-                    .setSenha(userEntity.getSenha());
+                    .setSenha(userEntity.getSenha())
+                    .setRoles(DTO_Role.convertToTableRolles(userEntity.getRoles()));
             return user;
     }
 

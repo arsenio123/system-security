@@ -6,6 +6,7 @@ import org.malagueta.fintech.domain.entity.UserEntity;
 import org.malagueta.fintech.domain.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +28,11 @@ public class UserRepositoryImpl extends GenericJDBCRepository<User> implements U
     }
 
     @Override
-    public UserEntity updateUser(UserEntity user) {
-        return null;
+    public UserEntity updateUser(UserEntity userEntity) {
+        User user=DTO_User.convertToUserTable(userEntity);
+        userUUIDJpaRepository.changePassword(user.getSenha(),user.getId());//
+
+        return userEntity;
     }
 
 
@@ -48,5 +52,10 @@ public class UserRepositoryImpl extends GenericJDBCRepository<User> implements U
 
         return userEntities;
     }
+    public UserEntity findById(Long resourceID) {
+        User user=userUUIDJpaRepository.findById(resourceID).orElse(null);
+        return DTO_User.convertToUserEntity(user);
+    }
+
 
 }

@@ -14,7 +14,7 @@ import java.util.List;
 public class GenericJDBCRepository<T>{
 private Logger log=LoggerFactory.getLogger(GenericJDBCRepository.class);
 @PersistenceContext
-private EntityManager presisteEntity;
+protected EntityManager presisteEntity;
 protected Class<T> type;
 
 

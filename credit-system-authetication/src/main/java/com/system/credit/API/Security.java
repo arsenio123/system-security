@@ -9,6 +9,8 @@ import org.malagueta.fintech.domain.entity.RoleEntity;
 import org.malagueta.fintech.domain.entity.UserEntity;
 import org.malagueta.fintech.domain.repository.UserRepository;
 import org.malagueta.fintech.domain.service.UserServiceDomain;
+import org.malagueta.fintech.domain.service.factory.UserServiceDomainFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +30,7 @@ public class Security {
     public Security(ValidarionService service, UserRepository repository) {
         this.service = service;
         this.repository = repository;
-        this.userServiceDomain=new UserServiceDomain();
+        this.userServiceDomain= UserServiceDomainFactory.getService("");
     }
 
     @PostMapping("/validate")
@@ -79,4 +81,21 @@ public class Security {
     public List<UserEntity> getAllUser(){
         return userServiceDomain.getAllUsers(repository);
     }
+
+    @PostMapping("user/changepass")
+    @CrossOrigin
+    public String changepass(@RequestParam String email
+            ,@RequestParam String newPassword
+            ,@RequestParam String id
+            ,@RequestParam String oldPassword
+    ){
+        return  userServiceDomain.changePassword(id,oldPassword,newPassword ,repository);
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String errorHandler(RuntimeException ex){
+        return ex.getMessage();
+    }
+
 }
