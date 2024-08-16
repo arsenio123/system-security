@@ -3,7 +3,6 @@ package com.system.credit;
 
 import com.system.credit.API.Security;
 import com.system.credit.io.ValidationRequest;
-import org.hibernate.engine.spi.ManagedEntity;
 import org.junit.jupiter.api.Test;
 import org.malagueta.fintech.domain.entity.AuthorityEntity;
 import org.malagueta.fintech.domain.entity.RoleEntity;
@@ -12,6 +11,8 @@ import org.malagueta.fintech.domain.service.AuthorityServiceDomain;
 import org.malagueta.fintech.domain.service.factory.AuthorityServiceDomainFactory;
 import org.malagueta.fintech.exception.SerciceException;
 import org.malagueta.fintech.exception.ServiceCatalogMessages;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
@@ -36,7 +37,7 @@ public class AuthorityTest {
         ValidationRequest request= new ValidationRequest();
         request.setToken("");
         request.setUri("/credito/list/critirea/v2");
-        Assert.isTrue(securityApi.validateToken(request).getStatusCodeValue()== HttpURLConnection.HTTP_UNAUTHORIZED,"essa autoridade ja foi dada tem que passar");
+        Assert.isTrue(securityApi.validateToken(request).getStatusCodeValue()== HttpURLConnection.HTTP_BAD_REQUEST,"essa autoridade ja foi dada tem que passar");
     }
 
     @Test
@@ -71,4 +72,14 @@ public class AuthorityTest {
             }
 
     }
+
+    @Test
+    public void loggingTest(){
+        Logger log= LoggerFactory.getLogger(Security.class);
+        log.info("info :Teste");
+        log.error("error :Teste");
+        log.debug("debug :Teste");
+        log.warn("warn :Teste");
+    }
+
 }

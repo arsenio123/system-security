@@ -3,6 +3,7 @@ package com.system.credit.API;
 import com.system.credit.io.ValidationRequest;
 import com.system.credit.io.ValidationResponse;
 import com.system.credit.service.ValidarionService;
+import com.system.credit.util.EncryptionUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.malagueta.fintech.domain.entity.RoleEntity;
@@ -39,8 +40,8 @@ public class Security {
     public ResponseEntity<ValidationResponse> validateToken(@RequestBody ValidationRequest request){
     String [] tokenConpose=request.getToken().split("\\.");
         Base64.Decoder decoder = Base64.getUrlDecoder();
-
-        JSONObject payloadJSON = new JSONObject(new String(decoder.decode(tokenConpose[1])));
+        try {
+            JSONObject payloadJSON = new JSONObject(new String(decoder.decode(tokenConpose[1])));
 
         JSONArray jsonRoles = payloadJSON.getJSONArray("authorities");
 
@@ -52,6 +53,13 @@ public class Security {
         ValidationResponse validationResponse= service.autorizationValidation(request.getUri(), roles);
         ResponseEntity response =ResponseEntity.status(validationResponse.getStatus()).body(validationResponse);
         return response;
+        }catch (IndexOutOfBoundsException ex){
+            ValidationResponse validationResponse= new ValidationResponse()
+                    .setMessage("Sessão não válida")
+                    .setStatus(HttpStatus.BAD_REQUEST);
+            ResponseEntity response =ResponseEntity.status(validationResponse.getStatus()).body(validationResponse);
+            return response;
+        }
 
     }
 
@@ -74,6 +82,7 @@ public class Security {
     @PostMapping("Security/user/create")
     @CrossOrigin
     public UserEntity create(@RequestBody UserEntity userEntity){
+        userEntity.setSenha(EncryptionUtil.encrypt(userEntity.getSenha()));
         return userServiceDomain.createUser(userEntity,repository);
     }
     @GetMapping("user/list")
@@ -89,7 +98,10 @@ public class Security {
             ,@RequestParam String id
             ,@RequestParam String oldPassword
     ){
-        return  userServiceDomain.changePassword(id,oldPassword,newPassword ,repository);
+        return  userServiceDomain.changePassword(id
+                ,EncryptionUtil.encrypt(oldPassword)
+                , EncryptionUtil.encrypt(newPassword)
+                ,repository);
     }
 
     @ExceptionHandler(RuntimeException.class)

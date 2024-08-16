@@ -4,10 +4,10 @@ import com.system.credit.dto.DTO_User;
 import com.system.credit.tables.User;
 import org.malagueta.fintech.domain.entity.UserEntity;
 import org.malagueta.fintech.domain.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,6 +15,7 @@ import java.util.List;
 public class UserRepositoryImpl extends GenericJDBCRepository<User> implements UserRepository {
 
     private UserJPARepository userUUIDJpaRepository;
+    private Logger log= LoggerFactory.getLogger(UserRepositoryImpl.class);
 
     public UserRepositoryImpl(UserJPARepository userUUIDJpaRepository) {
         this.userUUIDJpaRepository = userUUIDJpaRepository;
@@ -44,18 +45,34 @@ public class UserRepositoryImpl extends GenericJDBCRepository<User> implements U
 
     @Override
     public List<UserEntity> getAll() {
+        System.out.println("iniciando o teste");
+        System.out.println("tamanho :"+testFindAll().size());
+        return null;
+
+
+        /*
         List<UserEntity> userEntities=new ArrayList<>();
         List<User> users= userUUIDJpaRepository.findAll();
         users.stream().forEach(user -> {
             userEntities.add(DTO_User.convertToUserEntity(user));
         });
 
-        return userEntities;
+        return userEntities;*/
+
     }
     public UserEntity findById(Long resourceID) {
         User user=userUUIDJpaRepository.findById(resourceID).orElse(null);
         return DTO_User.convertToUserEntity(user);
     }
 
+    /**
+     * TO-DELETE
+     * @param
+     * @return
+     */
+    public List<User> testFindAll() {
+        List<User> users=getAll(new User());
+        return users;
+    }
 
 }

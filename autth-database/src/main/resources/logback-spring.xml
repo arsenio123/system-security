@@ -80,7 +80,7 @@
     </root>
 
     <!-- LOG "com.baeldung*" at TRACE level -->
-    <logger name="com.malagueta.backend.credito" level="trace" additivity="false">
+    <logger name="com.malagueta.backend.credito" level="info" additivity="false">
         <appender-ref ref="RollingInfoFile" />
         <appender-ref ref="Console" />
     </logger>
@@ -88,7 +88,7 @@
         <appender-ref ref="RollingDebugFile" />
         <appender-ref ref="Console" />
     </logger>
-    <logger name="com.malagueta.backend.credito" level="debug" additivity="false">
+    <logger name="com.malagueta.backend.credito" level="error" additivity="false">
         <appender-ref ref="RollingErrorFile" />
         <appender-ref ref="Console" />
     </logger>

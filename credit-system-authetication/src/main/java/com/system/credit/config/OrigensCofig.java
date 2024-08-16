@@ -1,5 +1,8 @@
 package com.system.credit.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -20,31 +23,24 @@ public class OrigensCofig {
 
 
     public static Map<String,String> ORINGINS=null;
+    private static Logger log= LoggerFactory.getLogger(OrigensCofig.class);
 
     @Bean
+    @ConfigurationProperties
     public static Map<String,String> getORINGINS(){
         if(ORINGINS!=null){
             return ORINGINS;
         }else{
 
-            //String filePath = OrigensCofig.class.getResource("/example.txt").getFile();
 
              try {
                  Resource resource = new ClassPathResource("origens.properties");
                  String path=resource.getURL().getPath();
-                 System.out.println(path);
-                 File fileOrigins;
-                 try {
-                     fileOrigins = Paths.get(path).toFile();
-                 }
-                 catch (InvalidPathException ex){
-                      fileOrigins = Paths.get(path.substring(1)).toFile();
+                 log.info("origens.properties:"+path);
 
-                 }
-                 System.out.println("Absolute phat is: "+fileOrigins.getAbsolutePath());
 
                  Properties origensProperti = new Properties();
-                 origensProperti.load(new FileInputStream(fileOrigins));
+                 origensProperti.load(new FileInputStream(path));
                  String originsStr = (String) origensProperti.get("app.origins.allowed");
                  String[] origins =originsStr.split(",");
 
