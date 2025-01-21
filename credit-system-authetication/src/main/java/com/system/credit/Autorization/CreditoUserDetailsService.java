@@ -1,7 +1,6 @@
 package com.system.credit.Autorization;
 
 import com.system.credit.util.EncryptionUtil;
-import org.bouncycastle.asn1.cms.EncryptedData;
 import org.malagueta.fintech.domain.entity.UserEntity;
 import org.malagueta.fintech.domain.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;

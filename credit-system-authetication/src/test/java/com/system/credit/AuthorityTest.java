@@ -3,7 +3,8 @@ package com.system.credit;
 
 import com.system.credit.API.Security;
 import com.system.credit.io.ValidationRequest;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.malagueta.fintech.domain.entity.AuthorityEntity;
 import org.malagueta.fintech.domain.entity.RoleEntity;
 import org.malagueta.fintech.domain.repository.AuthoriteRepository;

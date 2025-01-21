@@ -1,6 +1,5 @@
 package com.system.credit.service;
 
-import com.system.credit.io.Status;
 import com.system.credit.io.ValidationRequest;
 import com.system.credit.io.ValidationResponse;
 import org.malagueta.fintech.domain.entity.AuthorityEntity;
